@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+.active {
+  border-color: #181e22; /* Example border color for active link */
+  transform: scale(1.1); /* Example scale transformation for active link */
+  border-bottom-width: 1px; /* Example border width for active link */
+  /* Add any additional styles for the active link here */
+}
+.loadanim {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #181e22;
+  display: inline-block;
+  margin-right: 5px;
+  /* animation: loadingdot 3s ease-in-out infinite; */
+}
+.loadanim:first-child {
+  animation: loadingdot 3s ease-in-out infinite;
+}
+.loadanim:nth-child(2) {
+  animation: loadingdot 3s ease-in-out infinite 0.5s;
+}
+.loadanim:last-child {
+  animation: loadingdot 3s ease-in-out infinite 12s;
+}
+
+@keyframes loadingdot {
+  0% {
+    height: 10px;
+  }
+  25% {
+    height: 20px;
+  }
+  50% {
+    height: 30px;
+  }
+  75% {
+    height: 20px;
+  }
+  100% {
+    height: 10px;
+  }
+}
