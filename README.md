@@ -31,8 +31,10 @@ Kasbah Cuisine is an authentic and elegant restaurant website that offers a full
 2. **Install dependencies**:
    npm install
 3. **Configure Environment Variables**:
+   ``` bash
    VITE_SUPABASE_KEY=your_supabase_api_key_here
    VITE_GOOGLE_API_KEY=your_google_maps_api_key_here
+   ```
 
 ## How to Contribute
 
