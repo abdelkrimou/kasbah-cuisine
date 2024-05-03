@@ -22,7 +22,7 @@ const router = createHashRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <LandingPage />,
       },
       {
