@@ -19,31 +19,32 @@ const router = createBrowserRouter([
   {
     element: <Home />,
     errorElement: <Error />,
+    path: "/kasbah-cuisine/",
     children: [
       {
         path: "/kasbah-cuisine/",
         element: <LandingPage />,
       },
       {
-        path: "/aboutus",
+        path: "aboutus",
         element: <AboutUs />,
       },
       {
-        path: "/menu",
+        path: "menu",
         element: <Menu />,
         loader: Menuloader,
       },
       {
-        path: "/interior",
+        path: "interior",
         element: <Interior />,
       },
       {
-        path: "/booking/:tabletypeid",
+        path: "booking/:tabletypeid",
         element: <CreateBooking />,
         loader: tableNameLoader,
       },
       {
-        path: "/tables",
+        path: "tables",
         element: <Tables />,
         loader: tableTypesloader,
         children: [
@@ -55,16 +56,16 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/confirmation/:bookingnumber",
+        path: "confirmation/:bookingnumber",
         element: <Confirmation />,
         loader: fetchBoooking,
       },
       {
-        path: "/checkbooking",
+        path: "checkbooking",
         element: <CheckBooking />,
       },
       {
-        path: "/updatebooking/:bookingnumber",
+        path: "updatebooking/:bookingnumber",
         element: <UpdateBookingForm />,
         loader: fetchBoookingforUpdate,
       },
