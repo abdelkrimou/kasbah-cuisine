@@ -18,10 +18,11 @@ import { BookingContextProvider } from "./components/Context";
 const router = createHashRouter([
   {
     element: <Home />,
+    path: "/",
     errorElement: <Error />,
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <LandingPage />,
       },
       {
