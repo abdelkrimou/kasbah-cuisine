@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Menu, { Menuloader } from "./pages/Menu";
@@ -15,36 +15,35 @@ import UpdateBookingForm, {
 } from "./pages/UpdateBookingForm";
 import { BookingContextProvider } from "./components/Context";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <Home />,
     errorElement: <Error />,
-    path: "/kasbah-cuisine/",
     children: [
       {
-        path: "/kasbah-cuisine/",
+        path: "/",
         element: <LandingPage />,
       },
       {
-        path: "aboutus",
+        path: "/aboutus",
         element: <AboutUs />,
       },
       {
-        path: "menu",
+        path: "/menu",
         element: <Menu />,
         loader: Menuloader,
       },
       {
-        path: "interior",
+        path: "/interior",
         element: <Interior />,
       },
       {
-        path: "booking/:tabletypeid",
+        path: "/booking/:tabletypeid",
         element: <CreateBooking />,
         loader: tableNameLoader,
       },
       {
-        path: "tables",
+        path: "/tables",
         element: <Tables />,
         loader: tableTypesloader,
         children: [
@@ -56,16 +55,16 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "confirmation/:bookingnumber",
+        path: "/confirmation/:bookingnumber",
         element: <Confirmation />,
         loader: fetchBoooking,
       },
       {
-        path: "checkbooking",
+        path: "/checkbooking",
         element: <CheckBooking />,
       },
       {
-        path: "updatebooking/:bookingnumber",
+        path: "/updatebooking/:bookingnumber",
         element: <UpdateBookingForm />,
         loader: fetchBoookingforUpdate,
       },
