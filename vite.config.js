@@ -4,6 +4,6 @@ import eslint from "vite-plugin-eslint";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  path: "./",
+  path: "/kasbah-cuisine/",
   plugins: [react(), eslint()],
 });
