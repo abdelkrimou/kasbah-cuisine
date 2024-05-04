@@ -9,21 +9,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: "14" # or the version you're using
+          node-version: "20" # or the version you're using
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build and Check Directory
         run: |
           echo "VITE_SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env
-          npm run build -- --outDir=dist
-          ls -la # List current directory contents
+          npm run build || exit 1
+          ls -la dist || exit 1 # Ensures that if dist doesn't exist, the workflow fails
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
