@@ -4,7 +4,7 @@ import eslint from "vite-plugin-eslint";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/kasbah-cuisine/",
+  base: "/",
   plugins: [react(), eslint()],
   build: {
     outDir: "dist", // Ensuring that the output directory is explicitly set
