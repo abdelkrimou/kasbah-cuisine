@@ -22,7 +22,8 @@ jobs:
       - name: Build
         run: |
           echo "VITE_SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env
-          npm run build
+          npm run build -- --outDir=dist
+          ls -la # List current directory contents
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
