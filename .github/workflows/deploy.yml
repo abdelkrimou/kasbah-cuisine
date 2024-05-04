@@ -1,34 +1,24 @@
-name: Deploy to GitHub Pages
+name: Deploy Function
 
 on:
   push:
     branches:
-      - main # or your default branch
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
+    env:
+      VITE_SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      PROJECT_ID: vaifjaemhqodguyixcxy
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: supabase/setup-cli@v1
         with:
-          node-version: "20" # or the version you're using
+          version: latest
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build and Check Directory
-        run: |
-          echo "VITE_SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env
-          npm run build || exit 1
-          ls -la dist || exit 1 # Ensures that if dist doesn't exist, the workflow fails
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # target branch
-          FOLDER: dist # or the build directory of your project
-          CLEAN: true
+      - run: supabase functions deploy --project-ref $PROJECT_ID
